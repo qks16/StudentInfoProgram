@@ -10,9 +10,8 @@ struct student
     int studentID;
     string studentName;
     int studentAge;
-     int studentGPA;
-     string studentMajor;
-    string studentEmail;
+    float studentGPA;
+    string studentMajor;
     int studentYear; 
 };
 

@@ -1,9 +1,11 @@
 #include "utils.h"
+#include "student.h"
+
 
 #include <iostream>
+#include <list>
+#include <algorithm>
 #include <string>
-
-
 
 using namespace std;
 
@@ -16,19 +18,60 @@ void displayMenu() {
     cout << "5. Exit" << endl;
 }
 
-void addStudent() {
-    cout << "addStudent function not implemented yet." << endl;
+void addStudent(list<student>& studentList) {
+
+    student newStudent;
+
+    cout << "Enter Student ID: ";
+    cin >> newStudent.studentID;
+    cout << "Enter Student Name: ";
+    cin.ignore(); // Ignore the newline character left in the input buffer
+    getline(cin, newStudent.studentName);
+    cout << "Enter Student Age: ";
+    cin >> newStudent.studentAge;
+    cout << "Enter Student GPA: ";
+    cin >> newStudent.studentGPA;
+    cout << "Enter Student Major: ";
+    cin.ignore(); // Ignore the newline character left in the input buffer
+    getline(cin, newStudent.studentMajor);
+    cout << "Enter Student Year: ";
+    cin >> newStudent.studentYear;
+
+    // Add the new student to the list
+    studentList.push_back(newStudent);
+
 }
 
-void displayStudentInfo() {
-    // void displayStudentInfo(const Student& student) {
-    // cout << "Student ID: " << student.id << endl;
-    // cout << "Name: " << student.name << endl;
-    // cout << "Age: " << student.age << endl;
-    // cout << "GPA: " << student.gpa << endl;
-    // }
+void displayStudentInfo(list<student>& studentList) {
     
-    cout << "displayStudentInfo function not implemented yet." << endl;
+    if (studentList.empty()) {
+        cout << "No student information available." << endl;
+        return;
+    }
+
+    bool found = false;
+    int id;
+
+    cout << "Enter student ID: ";
+    cin >> id;
+
+    // use find_if() algorithm to search for the student with the given ID and display their information
+    auto it = find_if(studentList.begin(), studentList.end(), [id](const student& s) {
+        return s.studentID == id;
+    });
+    
+    if (it != studentList.end()) {
+        const student& s = *it;
+        cout << "Student Information:" << endl;
+        cout << "Student ID: " << s.studentID << endl;
+        cout << "Student Name: " << s.studentName << endl;
+        cout << "Student Age: " << s.studentAge << endl;
+        cout << "Student GPA: " << s.studentGPA << endl;
+        cout << "Student Major: " << s.studentMajor << endl;
+        cout << "Student Year: " << s.studentYear << endl;
+    } else {
+        cout << "Student with ID " << id << " not found." << endl;
+    }
 }
 
 void updateStudentInfo() {
