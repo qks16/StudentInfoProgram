@@ -1,4 +1,8 @@
+#ifndef STUDENT_H
+#define STUDENT_H
+
 #include <string>
+
 using namespace std;
 
 struct student
@@ -11,3 +15,5 @@ struct student
     string studentEmail;
     int studentYear; 
 };
+
+#endif // STUDENT_H
