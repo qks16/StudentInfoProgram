@@ -9,22 +9,23 @@
 
 using namespace std;
 
-int main(int argc, char* argv[]) {
+// int argc, char* argv[]
+int main() {
 
-    if(argc < 1) {
-        cerr << "Usage: " << argv[0] << " <input_file>" << endl;
-        return 1;
-    }
+    // if(argc < 1) {
+    //     cerr << "Usage: " << argv[0] << " <input_file>" << endl;
+    //     return 1;
+    // }
 
     // Open a file for writing
-    ofstream outFile(argv[1]);
+    ofstream outFile("output.txt");
     if (!outFile) {
         cerr << "Error opening file for writing." << endl;
         return 1;
     }
 
     // Open the file for reading
-    ifstream inFile(argv[1]);
+    ifstream inFile("output.txt");
     if (!inFile) {
         cerr << "Error opening file for reading." << endl;
         return 1;

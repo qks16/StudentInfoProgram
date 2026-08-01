@@ -3,8 +3,6 @@
 
 #include "utils.h"
 
-#include "student.h"
-
 using namespace std;
 
 void displayMenu() {
